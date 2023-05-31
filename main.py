@@ -38,7 +38,7 @@ for index, person in enumerate(list_of_words[1:], start=1):
     elif person[-1]:
         res1 = re.sub(pattern, sub_num_11, person[-1])
         list_of_words[index][-1] = res1
-# pprint(list_of_words[-2])
+
 similar = []
 for el in list_of_words[-2]:
     if el not in similar:
@@ -50,4 +50,9 @@ for elem in list_of_words[-1]:
 del list_of_words[-1]
 del list_of_words[-1]
 list_of_words.append(similar)
-pprint(list_of_words)
+
+if __name__ == '__main__':
+    with open("list_of_words.csv", "w", encoding='utf8') as f:
+        datawriter = csv.writer(f, delimiter=',')
+        datawriter.writerows(list_of_words)
+
