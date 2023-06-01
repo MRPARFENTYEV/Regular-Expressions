@@ -1,5 +1,6 @@
 import re
 import csv
+from pprint import pprint
 
 list_of_words = []
 formatted_num = []
@@ -27,13 +28,12 @@ sub_num_15 = r'+7(\2)\3-\4-\5 \7\8'
 
 for index, person in enumerate(list_of_words[1:], start=1):
     if "доб." in person[-1]:
+        # print(person[-1])
         res2 = re.sub(pattern, sub_num_15, person[-1])
-
-    list_of_words[index][-1] = res2
-
-elif person[-1]:
-res1 = re.sub(pattern, sub_num_11, person[-1])
-list_of_words[index][-1] = res1
+        list_of_words[index][-1] = res2
+    elif person[-1]:
+        res1 = re.sub(pattern, sub_num_11, person[-1])
+        list_of_words[index][-1] = res1
 
 similar = []
 for el in list_of_words[-2]:
@@ -46,6 +46,19 @@ for elem in list_of_words[-1]:
 del list_of_words[-1]
 del list_of_words[-1]
 list_of_words.append(similar)
+
+# print(list_of_words[2])
+# print(list_of_words[4])
+sim =[]
+for el in list_of_words[2]:
+    if el not in sim:
+        sim.append(el)
+for elem in list_of_words[4]:
+    if elem not in sim:
+        sim.append(elem)
+del list_of_words[2],list_of_words[3]
+# pprint(sim)
+list_of_words.append(sim)
 
 if __name__ == '__main__':
     with open("list_of_words.csv", "w", encoding='utf8') as f:
