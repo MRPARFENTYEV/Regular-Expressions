@@ -1,12 +1,9 @@
 import re
 import csv
-from pprint import pprint
 
-# no_changes = []
 list_of_words = []
 formatted_num = []
 empty_string = ""
-#
 
 with open("phonebook_raw.csv", 'r', encoding='utf-8') as f:
     for raw in csv.reader(f, delimiter=","):
@@ -55,4 +52,3 @@ if __name__ == '__main__':
     with open("list_of_words.csv", "w", encoding='utf8') as f:
         datawriter = csv.writer(f, delimiter=',')
         datawriter.writerows(list_of_words)
-
