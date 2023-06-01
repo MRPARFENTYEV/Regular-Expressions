@@ -27,14 +27,13 @@ sub_num_15 = r'+7(\2)\3-\4-\5 \7\8'
 
 for index, person in enumerate(list_of_words[1:], start=1):
     if "доб." in person[-1]:
-        # print(person[-1])
         res2 = re.sub(pattern, sub_num_15, person[-1])
 
-        list_of_words[index][-1] = res2
+    list_of_words[index][-1] = res2
 
-    elif person[-1]:
-        res1 = re.sub(pattern, sub_num_11, person[-1])
-        list_of_words[index][-1] = res1
+elif person[-1]:
+res1 = re.sub(pattern, sub_num_11, person[-1])
+list_of_words[index][-1] = res1
 
 similar = []
 for el in list_of_words[-2]:
